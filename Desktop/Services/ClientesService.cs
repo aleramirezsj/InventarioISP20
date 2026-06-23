@@ -7,6 +7,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
 
 
@@ -16,17 +17,11 @@ namespace Desktop.Services
     {
         HttpClient httpClient;
         string urlApi = "https://qcjcnuwjakajhqsvvdug.supabase.co/rest/v1/clientes";
-
+        JsonSerializerOptions options;
         public ClientesService()
         {
-            Env.Load("../../../");
-            var apikey = Environment.GetEnvironmentVariable("apikey_supabase");
-            //instanciamos el httpClient y lo configuramos para poder utilizarlo en cada uno de los métodos
-            httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(urlApi);
-            //agregamos apikey de la url
-            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-            httpClient.DefaultRequestHeaders.Add("apikey", apikey);
+            httpClient = SettingHttpClient();
+            options = SettingJsonSerializer();
         }
 
         public async Task<List<Cliente>?> GetAllAsync()
@@ -63,7 +58,7 @@ namespace Desktop.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    var clientes = System.Text.Json.JsonSerializer.Deserialize<List<Cliente>>(json);
+                    var clientes = JsonSerializer.Deserialize<List<Cliente>>(json);
                     return clientes;
                 }
                 else
@@ -85,11 +80,7 @@ namespace Desktop.Services
             try
             {
                 // Configuramos las opciones de serialización para ignorar propiedades nulas y hacer que la búsqueda de propiedades sea insensible a mayúsculas
-                var options = new JsonSerializerOptions
-                {
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                    PropertyNameCaseInsensitive = true,
-                };
+                
 
                 var json = JsonSerializer.Serialize(cliente,options);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -110,6 +101,29 @@ namespace Desktop.Services
                 return false;
             }
 
+        }
+
+        public async Task<bool> DeleteClienteAsync(int id)
+        {
+            try
+            {
+                string urlSelectedId = $"?id=eq.{id}";
+                var response = await httpClient.DeleteAsync(urlSelectedId);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el cliente: " + response.ReasonPhrase);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el cliente desde la Api: " + ex.Message);
+                return false;
+            }
         }
 
         public async Task<bool> UpdateClienteAsync(Cliente cliente)
@@ -143,6 +157,28 @@ namespace Desktop.Services
                 return false;
             }
 
+        }
+
+        private HttpClient SettingHttpClient()
+        {
+            Env.Load("../../../");
+            var apikey = Environment.GetEnvironmentVariable("apikey_supabase");
+            //instanciamos el httpClient y lo configuramos para poder utilizarlo en cada uno de los métodos
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(urlApi);
+            //agregamos apikey de la url
+            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            httpClient.DefaultRequestHeaders.Add("apikey", apikey);
+            return httpClient;
+        }
+
+        private JsonSerializerOptions SettingJsonSerializer()
+        {
+            return new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                PropertyNameCaseInsensitive = true,
+            };
         }
 
     }
