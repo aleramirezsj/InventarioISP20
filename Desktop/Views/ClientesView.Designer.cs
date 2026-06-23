@@ -47,6 +47,7 @@
             txtNombre = new TextBox();
             btnCancelar = new FontAwesome.Sharp.IconButton();
             btnGuardar = new FontAwesome.Sharp.IconButton();
+            btnModificar = new FontAwesome.Sharp.IconButton();
             tabControl1.SuspendLayout();
             tabPageLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClientes).BeginInit();
@@ -76,6 +77,7 @@
             // 
             // tabPageLista
             // 
+            tabPageLista.Controls.Add(btnModificar);
             tabPageLista.Controls.Add(btnNuevo);
             tabPageLista.Controls.Add(btnBuscar);
             tabPageLista.Controls.Add(txtBusqueda);
@@ -253,6 +255,19 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // btnModificar
+            // 
+            btnModificar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnModificar.IconColor = Color.Black;
+            btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnModificar.Location = new Point(791, 164);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(136, 37);
+            btnModificar.TabIndex = 5;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
             // ClientesView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -294,5 +309,6 @@
         private TextBox txtDni;
         private TextBox txtApellido;
         private FontAwesome.Sharp.IconButton btnNuevo;
+        private FontAwesome.Sharp.IconButton btnModificar;
     }
 }

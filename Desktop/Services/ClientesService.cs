@@ -1,11 +1,14 @@
 ﻿using Desktop.Models;
+using DotNetEnv;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 
 namespace Desktop.Services
 {
@@ -16,12 +19,14 @@ namespace Desktop.Services
 
         public ClientesService()
         {
+            Env.Load("../../../");
+            var apikey = Environment.GetEnvironmentVariable("apikey_supabase");
             //instanciamos el httpClient y lo configuramos para poder utilizarlo en cada uno de los métodos
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(urlApi);
             //agregamos apikey de la url
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-            httpClient.DefaultRequestHeaders.Add("apikey", "");
+            httpClient.DefaultRequestHeaders.Add("apikey", apikey);
         }
 
         public async Task<List<Cliente>?> GetAllAsync()
@@ -106,5 +111,39 @@ namespace Desktop.Services
             }
 
         }
+
+        public async Task<bool> UpdateClienteAsync(Cliente cliente)
+        {
+            try
+            {
+                // Configuramos las opciones de serialización para ignorar propiedades nulas y hacer que la búsqueda de propiedades sea insensible a mayúsculas
+                var options = new JsonSerializerOptions
+                {
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    PropertyNameCaseInsensitive = true,
+                };
+
+                var json = JsonSerializer.Serialize(cliente, options);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                string urlSelectedId = $"?id=eq.{cliente.id}";
+                var response = await httpClient.PutAsync(urlSelectedId, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar el cliente: " + response.ReasonPhrase);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el cliente desde la Api: " + ex.Message);
+                return false;
+            }
+
+        }
+
     }
 }
