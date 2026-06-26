@@ -162,7 +162,7 @@ namespace Desktop.Services
         private HttpClient SettingHttpClient()
         {
             Env.Load("../../../");
-            var apikey = Environment.GetEnvironmentVariable("apikey_supabase");
+            var apikey = Environment.GetEnvironmentVariable("SUPABASE_KEY");
             //instanciamos el httpClient y lo configuramos para poder utilizarlo en cada uno de los métodos
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(urlApi);

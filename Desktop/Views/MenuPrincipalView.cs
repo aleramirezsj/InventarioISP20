@@ -39,5 +39,11 @@ namespace Desktop
             ClientesView clientesView = new();
             clientesView.ShowDialog();
         }
+
+        private void subMenuClientesSupabase_Click(object sender, EventArgs e)
+        {
+            ClientesSupabaseView clientesSupabaseView = new();
+            clientesSupabaseView.ShowDialog();
+        }
     }
 }

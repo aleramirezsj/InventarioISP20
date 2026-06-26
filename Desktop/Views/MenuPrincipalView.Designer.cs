@@ -33,9 +33,10 @@
             iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             SubMenuArticulos = new FontAwesome.Sharp.IconMenuItem();
             SubmenuCategorias = new FontAwesome.Sharp.IconMenuItem();
+            subMenuClientes = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             SubMenuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
-            subMenuClientes = new FontAwesome.Sharp.IconMenuItem();
+            subMenuClientesSupabase = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             // 
             // iconMenuItem1
             // 
-            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubmenuCategorias, subMenuClientes });
+            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubmenuCategorias, subMenuClientesSupabase, subMenuClientes });
             iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.House;
             iconMenuItem1.IconColor = Color.Black;
             iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -83,7 +84,7 @@
             SubMenuArticulos.IconColor = Color.Black;
             SubMenuArticulos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             SubMenuArticulos.Name = "SubMenuArticulos";
-            SubMenuArticulos.Size = new Size(270, 34);
+            SubMenuArticulos.Size = new Size(361, 34);
             SubMenuArticulos.Text = "Articulos";
             SubMenuArticulos.Click += SubMenuArticulos_Click;
             // 
@@ -93,9 +94,19 @@
             SubmenuCategorias.IconColor = Color.Black;
             SubmenuCategorias.IconFont = FontAwesome.Sharp.IconFont.Auto;
             SubmenuCategorias.Name = "SubmenuCategorias";
-            SubmenuCategorias.Size = new Size(270, 34);
+            SubmenuCategorias.Size = new Size(361, 34);
             SubmenuCategorias.Text = "Categorías";
             SubmenuCategorias.Click += SubmenuCategorias_Click;
+            // 
+            // subMenuClientes
+            // 
+            subMenuClientes.IconChar = FontAwesome.Sharp.IconChar.User;
+            subMenuClientes.IconColor = Color.Black;
+            subMenuClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuClientes.Name = "subMenuClientes";
+            subMenuClientes.Size = new Size(361, 34);
+            subMenuClientes.Text = "Clientes";
+            subMenuClientes.Click += subMenuClientes_Click;
             // 
             // iconMenuItem2
             // 
@@ -117,15 +128,15 @@
             SubMenuSalirDelSistema.Text = "Salir del sistema";
             SubMenuSalirDelSistema.Click += SubMenuSalirDelSistema_Click;
             // 
-            // subMenuClientes
+            // subMenuClientesSupabase
             // 
-            subMenuClientes.IconChar = FontAwesome.Sharp.IconChar.User;
-            subMenuClientes.IconColor = Color.Black;
-            subMenuClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            subMenuClientes.Name = "subMenuClientes";
-            subMenuClientes.Size = new Size(270, 34);
-            subMenuClientes.Text = "Clientes";
-            subMenuClientes.Click += subMenuClientes_Click;
+            subMenuClientesSupabase.IconChar = FontAwesome.Sharp.IconChar.User;
+            subMenuClientesSupabase.IconColor = Color.Black;
+            subMenuClientesSupabase.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuClientesSupabase.Name = "subMenuClientesSupabase";
+            subMenuClientesSupabase.Size = new Size(361, 34);
+            subMenuClientesSupabase.Text = "Clientes con paquete Supabase";
+            subMenuClientesSupabase.Click += subMenuClientesSupabase_Click;
             // 
             // MenuPrincipalView
             // 
@@ -155,5 +166,6 @@
         private FontAwesome.Sharp.IconMenuItem SubMenuArticulos;
         private FontAwesome.Sharp.IconMenuItem SubmenuCategorias;
         private FontAwesome.Sharp.IconMenuItem subMenuClientes;
+        private FontAwesome.Sharp.IconMenuItem subMenuClientesSupabase;
     }
 }
