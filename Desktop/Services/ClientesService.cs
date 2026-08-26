@@ -23,7 +23,6 @@ namespace Desktop.Services
             httpClient = SettingHttpClient();
             options = SettingJsonSerializer();
         }
-
         public async Task<List<Cliente>?> GetAllAsync()
         {
             try

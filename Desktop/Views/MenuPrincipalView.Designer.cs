@@ -33,10 +33,11 @@
             iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             SubMenuArticulos = new FontAwesome.Sharp.IconMenuItem();
             SubmenuCategorias = new FontAwesome.Sharp.IconMenuItem();
+            subMenuClientesSupabase = new FontAwesome.Sharp.IconMenuItem();
             subMenuClientes = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             SubMenuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
-            subMenuClientesSupabase = new FontAwesome.Sharp.IconMenuItem();
+            SubMenuPruebasGemini = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             // 
             // iconMenuItem1
             // 
-            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubmenuCategorias, subMenuClientesSupabase, subMenuClientes });
+            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { SubMenuArticulos, SubmenuCategorias, subMenuClientesSupabase, subMenuClientes, SubMenuPruebasGemini });
             iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.House;
             iconMenuItem1.IconColor = Color.Black;
             iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -97,6 +98,16 @@
             SubmenuCategorias.Size = new Size(361, 34);
             SubmenuCategorias.Text = "Categorías";
             SubmenuCategorias.Click += SubmenuCategorias_Click;
+            // 
+            // subMenuClientesSupabase
+            // 
+            subMenuClientesSupabase.IconChar = FontAwesome.Sharp.IconChar.User;
+            subMenuClientesSupabase.IconColor = Color.Black;
+            subMenuClientesSupabase.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            subMenuClientesSupabase.Name = "subMenuClientesSupabase";
+            subMenuClientesSupabase.Size = new Size(361, 34);
+            subMenuClientesSupabase.Text = "Clientes con paquete Supabase";
+            subMenuClientesSupabase.Click += subMenuClientesSupabase_Click;
             // 
             // subMenuClientes
             // 
@@ -128,15 +139,15 @@
             SubMenuSalirDelSistema.Text = "Salir del sistema";
             SubMenuSalirDelSistema.Click += SubMenuSalirDelSistema_Click;
             // 
-            // subMenuClientesSupabase
+            // SubMenuPruebasGemini
             // 
-            subMenuClientesSupabase.IconChar = FontAwesome.Sharp.IconChar.User;
-            subMenuClientesSupabase.IconColor = Color.Black;
-            subMenuClientesSupabase.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            subMenuClientesSupabase.Name = "subMenuClientesSupabase";
-            subMenuClientesSupabase.Size = new Size(361, 34);
-            subMenuClientesSupabase.Text = "Clientes con paquete Supabase";
-            subMenuClientesSupabase.Click += subMenuClientesSupabase_Click;
+            SubMenuPruebasGemini.IconChar = FontAwesome.Sharp.IconChar.None;
+            SubMenuPruebasGemini.IconColor = Color.Black;
+            SubMenuPruebasGemini.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            SubMenuPruebasGemini.Name = "SubMenuPruebasGemini";
+            SubMenuPruebasGemini.Size = new Size(361, 34);
+            SubMenuPruebasGemini.Text = "Pruebas con IA - Gemini";
+            SubMenuPruebasGemini.Click += SubMenuPruebasGemini_Click;
             // 
             // MenuPrincipalView
             // 
@@ -167,5 +178,6 @@
         private FontAwesome.Sharp.IconMenuItem SubmenuCategorias;
         private FontAwesome.Sharp.IconMenuItem subMenuClientes;
         private FontAwesome.Sharp.IconMenuItem subMenuClientesSupabase;
+        private FontAwesome.Sharp.IconMenuItem SubMenuPruebasGemini;
     }
 }

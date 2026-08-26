@@ -1,7 +1,4 @@
-﻿
-
-
-using Consola.Class;
+﻿using Consola.Class;
 
 public class Program
 {

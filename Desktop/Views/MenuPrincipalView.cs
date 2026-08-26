@@ -45,5 +45,11 @@ namespace Desktop
             ClientesSupabaseView clientesSupabaseView = new();
             clientesSupabaseView.ShowDialog();
         }
+
+        private void SubMenuPruebasGemini_Click(object sender, EventArgs e)
+        {
+            ProbandoIA_Gemini probandoIA_Gemini = new();
+            probandoIA_Gemini.ShowDialog();
+        }
     }
 }

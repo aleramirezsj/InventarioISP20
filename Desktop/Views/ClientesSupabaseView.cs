@@ -98,6 +98,7 @@ namespace Desktop.Views
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+  
             //capturamos el cliente seleccionado en la grilla
             if (dataGridClientes.CurrentRow != null)
             {
