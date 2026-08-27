@@ -9,15 +9,18 @@ namespace Services.Models
 
     public class Cliente
     {
-        public int? id { get; set; }
+        public int Id { get; set; } = 0;
 
-        public DateTime? created_at { get; set; } = DateTime.Now;
+        public DateTimeOffset? Created_at { get; set; } = DateTimeOffset.Now;
 
-        public string firstname { get; set; }
+        public string Firstname { get; set; } = string.Empty;
 
-        public string lastname { get; set; }
+        public string Lastname { get; set; } = string.Empty;
 
-        public string dni { get; set; }
-        public string address { get; set; }
+        public string Dni { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public int LocalidadId { get; set; } = 0;
+        public Localidad? Localidad { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }
