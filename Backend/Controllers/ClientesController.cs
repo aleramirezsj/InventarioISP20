@@ -28,6 +28,13 @@ namespace Backend.Controllers
             return await _context.Clientes.ToListAsync();
         }
 
+        // devolvemos el total de clientes que no estan eliminados
+        [HttpGet("total")]
+        public async Task<ActionResult<int>> GetTotalClientes()
+        {
+            return await _context.Clientes.CountAsync(c => !c.IsDeleted);
+        }
+
         // GET: api/Clientes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
@@ -94,7 +101,8 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
-            _context.Clientes.Remove(cliente);
+            cliente.IsDeleted = true;
+            _context.Entry(cliente).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();

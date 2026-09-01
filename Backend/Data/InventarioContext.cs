@@ -14,6 +14,7 @@ namespace Backend.Data
         }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Localidad> Localidades { get; set; }
+        public DbSet<Provincia> Provincias { get; set; }
 
         //creamos el método OnConfiguring para configurar la cadena de conexión a la base de datos postgreSQL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,7 +30,7 @@ namespace Backend.Data
                     .Build();
 
                 //string cadenaConexion = configuration.GetConnectionString("mysqlRemote");
-                var cadenaConexion = configuration.GetConnectionString("postgresRemote");
+                var cadenaConexion = configuration.GetConnectionString("postgresLocal");
 
                 optionsBuilder.UseNpgsql(cadenaConexion);
             }
@@ -46,11 +47,22 @@ namespace Backend.Data
 
             //cargamos datos semilla para la tabla Localidades
             modelBuilder.Entity<Localidad>().HasData(
-                new Localidad { Id = 1, Name = "Buenos Aires" },
-                new Localidad { Id = 2, Name = "Córdoba" },
-                new Localidad { Id = 3, Name = "Rosario" },
-                new Localidad { Id = 4, Name = "San Justo" }
+                new Localidad { Id = 1, Name = "Buenos Aires",  ProvinciaId = 1 },
+                new Localidad { Id = 2, Name = "Córdoba" , ProvinciaId = 2 },
+                new Localidad { Id = 3, Name = "Rosario", ProvinciaId = 3 },
+                new Localidad { Id = 4, Name = "San Justo", ProvinciaId = 3 }
             );
+            modelBuilder.Entity<Provincia>().HasData(
+                new Provincia { Id = 1, Name = "Buenos Aires" },
+                new Provincia { Id = 2, Name = "Córdoba" },
+                new Provincia { Id = 3, Name = "Santa Fe" }
+            );
+            //desactivamos la eliminación en cascada para la relación entre Localidad y Provincia usando Fluent API
+            modelBuilder.Entity<Localidad>()
+                .HasOne(l => l.Provincia)
+                .WithMany()
+                .HasForeignKey(l => l.ProvinciaId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // configuramos la propiedad Created_at para que tenga un valor por defecto de la fecha y hora actual
             modelBuilder.Entity<Cliente>()
@@ -62,6 +74,8 @@ namespace Backend.Data
                 .HasQueryFilter(c => !c.IsDeleted);
             modelBuilder.Entity<Localidad>()
                 .HasQueryFilter(l => !l.IsDeleted);
+            modelBuilder.Entity<Provincia>()
+                .HasQueryFilter(p => !p.IsDeleted);
         }
     }
 }
