@@ -25,14 +25,20 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Localidad>>> GetLocalidades()
         {
-            return await _context.Localidades.ToListAsync();
+            return await _context.Localidades
+                            .Include(l => l.Provincia)
+                            .ThenInclude(p => p.Pais)
+                            .ToListAsync();
         }
 
         // GET: api/Localidades/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Localidad>> GetLocalidad(int id)
         {
-            var localidad = await _context.Localidades.FindAsync(id);
+            var localidad = await _context.Localidades
+            .Include(l => l.Provincia)
+            .ThenInclude(p => p.Pais)
+            .FirstOrDefaultAsync(l => l.Id == id);
 
             if (localidad == null)
             {
