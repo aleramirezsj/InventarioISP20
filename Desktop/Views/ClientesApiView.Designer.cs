@@ -31,6 +31,8 @@
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPageLista = new TabPage();
+            btnRestaurar = new FontAwesome.Sharp.IconButton();
+            checkVerEliminados = new CheckBox();
             btnEliminar = new FontAwesome.Sharp.IconButton();
             btnModificar = new FontAwesome.Sharp.IconButton();
             btnNuevo = new FontAwesome.Sharp.IconButton();
@@ -78,6 +80,8 @@
             // 
             // tabPageLista
             // 
+            tabPageLista.Controls.Add(btnRestaurar);
+            tabPageLista.Controls.Add(checkVerEliminados);
             tabPageLista.Controls.Add(btnEliminar);
             tabPageLista.Controls.Add(btnModificar);
             tabPageLista.Controls.Add(btnNuevo);
@@ -93,12 +97,37 @@
             tabPageLista.Text = "Lista";
             tabPageLista.UseVisualStyleBackColor = true;
             // 
+            // btnRestaurar
+            // 
+            btnRestaurar.Enabled = false;
+            btnRestaurar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnRestaurar.IconColor = Color.Black;
+            btnRestaurar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnRestaurar.Location = new Point(779, 346);
+            btnRestaurar.Name = "btnRestaurar";
+            btnRestaurar.Size = new Size(136, 37);
+            btnRestaurar.TabIndex = 8;
+            btnRestaurar.Text = "Restaurar";
+            btnRestaurar.UseVisualStyleBackColor = true;
+            btnRestaurar.Click += btnRestaurar_Click;
+            // 
+            // checkVerEliminados
+            // 
+            checkVerEliminados.AutoSize = true;
+            checkVerEliminados.Location = new Point(779, 298);
+            checkVerEliminados.Name = "checkVerEliminados";
+            checkVerEliminados.Size = new Size(154, 29);
+            checkVerEliminados.TabIndex = 7;
+            checkVerEliminados.Text = "Ver eliminados";
+            checkVerEliminados.UseVisualStyleBackColor = true;
+            checkVerEliminados.CheckedChanged += checkVerEliminados_CheckedChanged;
+            // 
             // btnEliminar
             // 
             btnEliminar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnEliminar.IconColor = Color.Black;
             btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEliminar.Location = new Point(794, 228);
+            btnEliminar.Location = new Point(782, 227);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(136, 37);
             btnEliminar.TabIndex = 6;
@@ -111,7 +140,7 @@
             btnModificar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnModificar.IconColor = Color.Black;
             btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnModificar.Location = new Point(791, 164);
+            btnModificar.Location = new Point(779, 163);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(136, 37);
             btnModificar.TabIndex = 5;
@@ -124,7 +153,7 @@
             btnNuevo.IconChar = FontAwesome.Sharp.IconChar.None;
             btnNuevo.IconColor = Color.Black;
             btnNuevo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnNuevo.Location = new Point(791, 105);
+            btnNuevo.Location = new Point(779, 104);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(136, 37);
             btnNuevo.TabIndex = 4;
@@ -137,7 +166,7 @@
             btnBuscar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnBuscar.IconColor = Color.Black;
             btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBuscar.Location = new Point(791, 24);
+            btnBuscar.Location = new Point(779, 23);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(136, 37);
             btnBuscar.TabIndex = 3;
@@ -149,7 +178,7 @@
             // 
             txtBusqueda.Location = new Point(109, 30);
             txtBusqueda.Name = "txtBusqueda";
-            txtBusqueda.Size = new Size(668, 31);
+            txtBusqueda.Size = new Size(644, 31);
             txtBusqueda.TabIndex = 2;
             txtBusqueda.KeyPress += txtBusqueda_KeyPress;
             // 
@@ -171,7 +200,7 @@
             dataGridClientes.Name = "dataGridClientes";
             dataGridClientes.ReadOnly = true;
             dataGridClientes.RowHeadersWidth = 62;
-            dataGridClientes.Size = new Size(770, 321);
+            dataGridClientes.Size = new Size(746, 321);
             dataGridClientes.TabIndex = 0;
             // 
             // tabPageAgregarEditar
@@ -327,5 +356,7 @@
         private FontAwesome.Sharp.IconButton btnNuevo;
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnEliminar;
+        private CheckBox checkVerEliminados;
+        private FontAwesome.Sharp.IconButton btnRestaurar;
     }
 }
