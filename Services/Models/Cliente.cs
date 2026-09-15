@@ -11,7 +11,7 @@ namespace Services.Models
     {
         public int Id { get; set; } = 0;
 
-        public DateTimeOffset? Created_at { get; set; } = DateTimeOffset.Now;
+        public DateTimeOffset? Created_at { get; set; } = DateTimeOffset.UtcNow;
 
         public string Firstname { get; set; } = string.Empty;
 

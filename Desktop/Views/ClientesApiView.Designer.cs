@@ -226,7 +226,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(67, 324);
+            label6.Location = new Point(71, 276);
             label6.Name = "label6";
             label6.Size = new Size(89, 25);
             label6.TabIndex = 13;
@@ -235,7 +235,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(102, 248);
+            label5.Location = new Point(106, 200);
             label5.Name = "label5";
             label5.Size = new Size(47, 25);
             label5.TabIndex = 12;
@@ -244,7 +244,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(67, 169);
+            label4.Location = new Point(71, 121);
             label4.Name = "label4";
             label4.Size = new Size(82, 25);
             label4.TabIndex = 11;
@@ -253,7 +253,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(67, 94);
+            label3.Location = new Point(71, 46);
             label3.Name = "label3";
             label3.Size = new Size(82, 25);
             label3.TabIndex = 10;
@@ -261,28 +261,28 @@
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(208, 324);
+            txtDireccion.Location = new Point(212, 276);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(476, 31);
             txtDireccion.TabIndex = 9;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(208, 242);
+            txtDni.Location = new Point(212, 194);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(476, 31);
             txtDni.TabIndex = 8;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(208, 163);
+            txtApellido.Location = new Point(212, 115);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(476, 31);
             txtApellido.TabIndex = 7;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(208, 88);
+            txtNombre.Location = new Point(212, 40);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(476, 31);
             txtNombre.TabIndex = 6;
