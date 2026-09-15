@@ -34,6 +34,8 @@ namespace Backend.Controllers
                         c.Lastname.ToUpper().Contains(filtro) ||
                         c.Dni.Contains(filtro) ||
                         c.Address.ToUpper().Contains(filtro))
+                .OrderBy(c=>c.Lastname)
+                .ThenBy(c=>c.Firstname)
                 .ToListAsync();
         }
 
