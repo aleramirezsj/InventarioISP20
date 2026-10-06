@@ -42,11 +42,6 @@ namespace Desktop.Views
             if (clientes != null)
             {
                 dataGridClientes.DataSource = clientes;
-                //ocultamos las columnas que no queremos mostrar
-                //dataGridClientes.Columns["Id"].Visible = false;
-                //dataGridClientes.Columns["Created_at"].Visible = false;
-                //dataGridClientes.Columns["LocalidadId"].Visible = false;
-                //dataGridClientes.Columns["IsDeleted"].Visible = false;
             }
         }
 

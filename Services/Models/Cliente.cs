@@ -10,7 +10,6 @@ namespace Services.Models
 
     public class Cliente
     {
-        
         [Browsable(false)] public int Id { get; set; } = 0;
         
         [Browsable(false)] public DateTimeOffset? Created_at { get; set; } = DateTimeOffset.UtcNow;
