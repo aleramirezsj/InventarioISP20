@@ -1,3 +1,4 @@
+using Desktop.ViewReports;
 using Desktop.Views;
 
 namespace Desktop
@@ -56,6 +57,12 @@ namespace Desktop
         {
             ClientesApiView clientesApiView = new();
             clientesApiView.ShowDialog();
+        }
+
+        private void subMenuListadoClientes_Click(object sender, EventArgs e)
+        {
+            ClientesViewReport clientesViewReport = new();
+            clientesViewReport.ShowDialog();
         }
     }
 }
