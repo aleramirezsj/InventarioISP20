@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Backend.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Backend.Data;
 using Services.Models;
 
 namespace Backend.Controllers
@@ -23,31 +23,35 @@ namespace Backend.Controllers
 
         // GET: api/Clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes([FromQuery] string filtro="")
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes(
+            [FromQuery] string filtro = ""
+        )
         {
             filtro = filtro.ToUpper();
-            return await _context.Clientes
-                .Include(c => c.Localidad)
-                .ThenInclude(l => l.Provincia)
-                .ThenInclude(p => p.Pais)
-                .Where(c=>c.Firstname.ToUpper().Contains(filtro) ||
-                        c.Lastname.ToUpper().Contains(filtro) ||
-                        c.Dni.Contains(filtro) ||
-                        c.Address.ToUpper().Contains(filtro))
-                .OrderBy(c=>c.Lastname)
-                .ThenBy(c=>c.Firstname)
+            return await _context
+                .Clientes.Include(c => c.Localidad)
+                    .ThenInclude(l => l.Provincia)
+                        .ThenInclude(p => p.Pais)
+                .Where(c =>
+                    c.Firstname.ToUpper().Contains(filtro)
+                    || c.Lastname.ToUpper().Contains(filtro)
+                    || c.Dni.Contains(filtro)
+                    || c.Address.ToUpper().Contains(filtro)
+                )
+                .OrderBy(c => c.Lastname)
+                .ThenBy(c => c.Firstname)
                 .ToListAsync();
         }
 
         [HttpGet("deleteds")]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetDeleteds()
         {
-            return await _context.Clientes
-                .IgnoreQueryFilters()
+            return await _context
+                .Clientes.IgnoreQueryFilters()
                 .Include(c => c.Localidad)
-                .ThenInclude(l => l.Provincia)
-                .ThenInclude(p => p.Pais)
-                .Where(c=>c.IsDeleted)
+                    .ThenInclude(l => l.Provincia)
+                        .ThenInclude(p => p.Pais)
+                .Where(c => c.IsDeleted)
                 .ToListAsync();
         }
 
@@ -62,11 +66,11 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
-            var cliente = await _context.Clientes
-                .Include(c => c.Localidad)
-                .ThenInclude(l => l.Provincia)
-                .ThenInclude(p => p.Pais)
-                .FirstOrDefaultAsync(c=>c.Id==id);
+            var cliente = await _context
+                .Clientes.Include(c => c.Localidad)
+                    .ThenInclude(l => l.Provincia)
+                        .ThenInclude(p => p.Pais)
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (cliente == null)
             {
@@ -138,9 +142,9 @@ namespace Backend.Controllers
         [HttpPut("restore/{id}")]
         public async Task<IActionResult> RestoreCliente(int id)
         {
-            var cliente = await _context.Clientes
-                .IgnoreQueryFilters()
-                .FirstOrDefaultAsync(c=>c.Id==id);
+            var cliente = await _context
+                .Clientes.IgnoreQueryFilters()
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (cliente == null)
             {
