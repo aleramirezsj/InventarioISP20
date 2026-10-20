@@ -15,6 +15,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.1" />
+    <!-- Fija versiones parcheadas de dependencias transitivas de CodeGeneration.Design (GHSA-g4vj-cjjj-v7hg en 6.12.1) -->
+    <PackageReference Include="NuGet.Packaging" Version="6.12.5" />
+    <PackageReference Include="NuGet.Protocol" Version="6.12.5" />
   </ItemGroup>
 
   <ItemGroup>
