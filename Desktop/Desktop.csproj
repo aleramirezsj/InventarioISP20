@@ -22,6 +22,9 @@
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.33" />
     <PackageReference Include="Supabase" Version="8.4.0" />
+    <!-- Fija versiones parcheadas de dependencias transitivas de ReportViewerCore (CVE en 10.0.0) -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.13" />
   </ItemGroup>
 
   <ItemGroup>
