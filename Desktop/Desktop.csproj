@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Reports\Clientes.rdlc" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Reports\Clientes.rdlc" />
   </ItemGroup>
 

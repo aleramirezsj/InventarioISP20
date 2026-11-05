@@ -30,7 +30,18 @@ namespace Desktop.ViewReports
 
             var clientes = await clientesService.GetAllAsync();
 
-            _report.LocalReport.DataSources.Add(new ReportDataSource("DSClientes", clientes));
+            //construimos la lista de clientes para el reporte sumandole el campo localidad
+            var listaClientes = clientes?.Select(c => new
+            {
+                c.Id,
+                c.Firstname,
+                c.Lastname,
+                c.Dni,
+                c.Address,
+                Localidad = c.Localidad?.Name
+            }).ToList();
+
+            _report.LocalReport.DataSources.Add(new ReportDataSource("DSClientes", listaClientes));
             _report.SetDisplayMode(DisplayMode.PrintLayout);
             _report.ZoomMode = ZoomMode.Percent;
             _report.ZoomPercent = 100;

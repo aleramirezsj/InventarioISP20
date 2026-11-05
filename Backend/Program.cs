@@ -30,7 +30,7 @@ internal class Program
         {
             options.AddPolicy("AllowSpecificOrigins",
                 builder => builder
-                    .WithOrigins("http://localhost:5173", "http://sitioweb.com.ar")
+                    .WithOrigins("http://localhost:5500", "http://localhost:5173", "http://sitioweb.com.ar")
                     .AllowAnyHeader()
                     .AllowAnyMethod());
         });

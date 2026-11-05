@@ -324,6 +324,10 @@ namespace Desktop.Datasets {
             
             private global::System.Data.DataColumn columnAddress;
             
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnLocalidad;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public ClientesDataTable() {
@@ -393,6 +397,22 @@ namespace Desktop.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn LocalidadColumn {
+                get {
+                    return this.columnLocalidad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -428,13 +448,15 @@ namespace Desktop.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public ClientesRow AddClientesRow(string Firstname, string Lastname, string Dni, string Address) {
+            public ClientesRow AddClientesRow(string Firstname, string Lastname, string Dni, string Address, string Id, string Localidad) {
                 ClientesRow rowClientesRow = ((ClientesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Firstname,
                         Lastname,
                         Dni,
-                        Address};
+                        Address,
+                        Id,
+                        Localidad};
                 rowClientesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClientesRow);
                 return rowClientesRow;
@@ -461,6 +483,8 @@ namespace Desktop.Datasets {
                 this.columnLastname = base.Columns["Lastname"];
                 this.columnDni = base.Columns["Dni"];
                 this.columnAddress = base.Columns["Address"];
+                this.columnId = base.Columns["Id"];
+                this.columnLocalidad = base.Columns["Localidad"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -474,6 +498,10 @@ namespace Desktop.Datasets {
                 base.Columns.Add(this.columnDni);
                 this.columnAddress = new global::System.Data.DataColumn("Address", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAddress);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnLocalidad = new global::System.Data.DataColumn("Localidad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocalidad);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -609,6 +637,8 @@ namespace Desktop.Datasets {
             
             private global::System.Data.DataColumn columnName;
             
+            private global::System.Data.DataColumn columnId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public LocalidadesDataTable() {
@@ -654,6 +684,14 @@ namespace Desktop.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -689,10 +727,11 @@ namespace Desktop.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public LocalidadesRow AddLocalidadesRow(string Name) {
+            public LocalidadesRow AddLocalidadesRow(string Name, string Id) {
                 LocalidadesRow rowLocalidadesRow = ((LocalidadesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Name};
+                        Name,
+                        Id};
                 rowLocalidadesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLocalidadesRow);
                 return rowLocalidadesRow;
@@ -716,6 +755,7 @@ namespace Desktop.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal void InitVars() {
                 this.columnName = base.Columns["Name"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -723,6 +763,8 @@ namespace Desktop.Datasets {
             private void InitClass() {
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -929,6 +971,38 @@ namespace Desktop.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public string Id {
+                get {
+                    try {
+                        return ((string)(this[this.tableClientes.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'Clientes\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClientes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public string Localidad {
+                get {
+                    try {
+                        return ((string)(this[this.tableClientes.LocalidadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Localidad\' de la tabla \'Clientes\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClientes.LocalidadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsFirstnameNull() {
                 return this.IsNull(this.tableClientes.FirstnameColumn);
             }
@@ -974,6 +1048,30 @@ namespace Desktop.Datasets {
             public void SetAddressNull() {
                 this[this.tableClientes.AddressColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool IsIdNull() {
+                return this.IsNull(this.tableClientes.IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void SetIdNull() {
+                this[this.tableClientes.IdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool IsLocalidadNull() {
+                return this.IsNull(this.tableClientes.LocalidadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void SetLocalidadNull() {
+                this[this.tableClientes.LocalidadColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -1008,6 +1106,22 @@ namespace Desktop.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public string Id {
+                get {
+                    try {
+                        return ((string)(this[this.tableLocalidades.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'Localidades\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLocalidades.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableLocalidades.NameColumn);
             }
@@ -1016,6 +1130,18 @@ namespace Desktop.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void SetNameNull() {
                 this[this.tableLocalidades.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool IsIdNull() {
+                return this.IsNull(this.tableLocalidades.IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void SetIdNull() {
+                this[this.tableLocalidades.IdColumn] = global::System.Convert.DBNull;
             }
         }
         

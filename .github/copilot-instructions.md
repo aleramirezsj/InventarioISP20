@@ -31,3 +31,4 @@
 
 ## Mandatory instructions
 - Hablar en español.
+- Corregir las vulnerabilidades de mi paquete NuGet.
