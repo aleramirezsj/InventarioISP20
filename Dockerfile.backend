@@ -1,0 +1,28 @@
+# Imagen del Backend de InventarioISP20 para el laboratorio del VPS.
+# Se construye desde la carpeta raiz del repo (donde esta este archivo):
+#   docker compose up -d --build backend
+# La cadena de conexion NO va en la imagen: llega por la variable
+# ConnectionStrings__postgresRemote (ver deploy-vps/GUIA-LABORATORIO.md).
+
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+# 1) Primero solo los .csproj: si no cambian, Docker reutiliza el restore cacheado.
+COPY NuGet.Config ./
+COPY Backend/Backend.csproj Backend/
+COPY Services/Services.csproj Services/
+RUN dotnet restore Backend/Backend.csproj
+
+# 2) Despues el codigo fuente.
+COPY Backend/ Backend/
+COPY Services/ Services/
+RUN dotnet publish Backend/Backend.csproj -c Release -o /app/publish --no-restore
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+WORKDIR /app
+ENV ASPNETCORE_HTTP_PORTS=8080
+EXPOSE 8080
+COPY --from=build /app/publish .
+# Usuario sin privilegios que trae la imagen oficial.
+USER $APP_UID
+ENTRYPOINT ["dotnet", "Backend.dll"]
