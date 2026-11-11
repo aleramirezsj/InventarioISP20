@@ -62,7 +62,27 @@ namespace Desktop
         private void subMenuListadoClientes_Click(object sender, EventArgs e)
         {
             ClientesViewReport clientesViewReport = new();
-            clientesViewReport.ShowDialog();
+            clientesViewReport.MdiParent = this;
+            clientesViewReport.WindowState = FormWindowState.Maximized;
+            clientesViewReport.Show();
+        }
+
+        private void BtnImprimirClientes_Click(object sender, EventArgs e)
+        {
+            subMenuListadoClientes_Click(sender, e);
+        }
+
+        private void BtnToolClientes_Click(object sender, EventArgs e)
+        {
+            subMenuListadoClientes_Click(sender, e);
+        }
+
+        private void SubmenuClientesxlocalidad_Click(object sender, EventArgs e)
+        {
+            ClientesAgrupadoPorLocalidadViewReport clientesViewReport = new();
+            clientesViewReport.MdiParent = this;
+            clientesViewReport.WindowState = FormWindowState.Maximized;
+            clientesViewReport.Show();
         }
     }
 }

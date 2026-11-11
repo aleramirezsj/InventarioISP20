@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reports\Clientes.rdlc" />
+    <None Remove="Reports\Clientesxlocalidad.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Reports\Clientes.rdlc" />
+    <EmbeddedResource Include="Reports\Clientesxlocalidad.rdlc" />
+    <EmbeddedResource Include="Resources\Clientesxlocalidad.rdlc" />
+    <EmbeddedResource Include="Resources\Clientes.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +46,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="ViewReports\ClientesAgrupadoPorLocalidadViewReport.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\ClientesSupabaseView.cs">
       <SubType>Form</SubType>

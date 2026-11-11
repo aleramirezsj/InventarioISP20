@@ -1,4 +1,5 @@
 ﻿using Desktop.Services;
+using Desktop.ViewReports;
 using Services.Models;
 using System;
 using System.Collections.Generic;
@@ -218,6 +219,12 @@ namespace Desktop.Views
             {
                 MessageBox.Show("Seleccione un cliente para restaurar");
             }
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            var frmReporteClientes = new ClientesViewReport(dataGridClientes.DataSource as List<Cliente>);
+            frmReporteClientes.ShowDialog();
         }
     }
 }

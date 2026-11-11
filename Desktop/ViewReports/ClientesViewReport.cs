@@ -1,5 +1,6 @@
 ﻿using Desktop.Services;
 using Microsoft.Reporting.WinForms;
+using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,8 @@ namespace Desktop.ViewReports
     {
         ReportViewer _report;
         ClientesApiService clientesService = new ClientesApiService();
-        public ClientesViewReport()
+        List<Cliente>? listadoClientes ;
+        public ClientesViewReport()//sin recepción de parametros
         {
             InitializeComponent();
             _report = new ReportViewer();
@@ -24,11 +26,20 @@ namespace Desktop.ViewReports
             this.Controls.Add(_report);
         }
 
+        public ClientesViewReport(List<Cliente>? clientes)//con recepción de parametros
+        {
+            InitializeComponent();
+            _report = new ReportViewer();
+            _report.Dock = DockStyle.Fill;
+            this.Controls.Add(_report);
+            listadoClientes = clientes;
+        }
+
         private async void ClientesViewReport_Load(object sender, EventArgs e)
         {
             _report.LocalReport.ReportEmbeddedResource = "Desktop.Reports.Clientes.rdlc";
 
-            var clientes = await clientesService.GetAllAsync();
+            var clientes = listadoClientes ?? await clientesService.GetAllAsync();
 
             //construimos la lista de clientes para el reporte sumandole el campo localidad
             var listaClientes = clientes?.Select(c => new
