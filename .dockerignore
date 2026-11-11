@@ -1,0 +1,22 @@
+# Salidas de compilacion y archivos del IDE
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/.DS_Store
+
+# Secretos: la conexion llega por variable de entorno, nunca dentro de la imagen
+**/.env
+**/.env.*
+Backend/appsettings.json
+
+# Proyectos que el backend no necesita
+AppMovil/
+Desktop/
+WebApp/
+Consola/
+.git/
+.github/
+deploy-vps/
